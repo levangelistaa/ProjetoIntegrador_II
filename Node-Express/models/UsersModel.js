@@ -4,22 +4,21 @@ class UsersModel {
 
   // Método para buscar todos os usuários
   static async findAll() {
-    const connection = await Database.getConnection();  // Obtendo a conexão única
-    const [rows] = await connection.execute("SELECT * FROM usuarios"); // Consulta SQL real
+    const connection = await Database.getConnection();
+    const [rows] = await connection.execute("SELECT * FROM usuarios");
     return rows;
   }
 
   // Método para buscar usuário por ID
   static async getById(id) {
-    const connection = await Database.getConnection();  // Obtendo a conexão única
-    const [rows] = await connection.execute("SELECT * FROM usuarios WHERE id = ?", [id]);  // Consulta parametrizada
+    const connection = await Database.getConnection();
+    const [rows] = await connection.execute("SELECT * FROM usuarios WHERE id = ?", [id]);
     return rows;
   }
 
   // Método para criar um novo usuário
-// Método para criar um novo usuário
 static async create(data) {
-    const connection = await Database.getConnection();  // Obtendo a conexão única
+    const connection = await Database.getConnection();
   
     // Desestruturando os dados recebidos
     const { name, cpf, email, celular, endereco, bairro, cidade, cep, complemento, senha } = data;
@@ -33,10 +32,9 @@ static async create(data) {
   }
   
 
-  // Método para atualizar um usuário
 // Método para atualizar um usuário
 static async update(id, data) {
-    const connection = await Database.getConnection();  // Obtendo a conexão única
+    const connection = await Database.getConnection();
   
     // Desestruturando os dados recebidos
     const { name, cpf, email, celular, endereco, bairro, cidade, cep, complemento, senha } = data;

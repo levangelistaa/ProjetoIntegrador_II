@@ -2,21 +2,21 @@ const Database = require('../configs/Database');  // Importando a classe Databas
 
 class ProductModel {
 
-  // Método para buscar todos os usuários
+  // Método para buscar todos os produtos
   static async findAll() {
-    const connection = await Database.getConnection();  // Obtendo a conexão única
-    const [rows] = await connection.execute("SELECT * FROM produtos"); // Consulta SQL real
+    const connection = await Database.getConnection();
+    const [rows] = await connection.execute("SELECT * FROM produtos");
     return rows;
   }
 
-  // Método para buscar usuário por ID
+  // Método para buscar produto por ID
   static async getById(id) {
-    const connection = await Database.getConnection();  // Obtendo a conexão única
-    const [rows] = await connection.execute("SELECT * FROM produtos WHERE id = ?", [id]);  // Consulta parametrizada
+    const connection = await Database.getConnection();
+    const [rows] = await connection.execute("SELECT * FROM produtos WHERE id = ?", [id]);
     return rows;
   }
 
-  // Método para criar um novo usuário
+  // Método para criar um novo produto
   static async create(data) {
     const connection = await Database.getConnection();  // Obtendo a conexão única
 
@@ -32,9 +32,9 @@ class ProductModel {
     return result;
 }
 
-  // Método para atualizar um usuário
+  // Método para atualizar um produto
   static async update(id, data) {
-    const connection = await Database.getConnection();  // Obtendo a conexão única
+    const connection = await Database.getConnection();
 
     // Desestruturando os dados recebidos
     const { enabled, name, stock, description, price, price_with_discount } = data;
@@ -48,7 +48,7 @@ class ProductModel {
     return result;
 }
   
-  // Método para remover um usuário
+  // Método para remover um produto
   static async remove(id) {
     const connection = await Database.getConnection();  // Obtendo a conexão única
     const result = await connection.execute("DELETE FROM produtos WHERE id = ?", [id]);

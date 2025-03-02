@@ -1,5 +1,6 @@
 const express = require('express');
-const RouterPrivate = require('./rotas/RouterPrivate');
+const UsersRouter = require('./rotas/UsersRouter');
+const PostsRouter = require('./rotas/PostsRouter')
 
 const host = "127.0.0.1"
 const port = 3000;
@@ -11,8 +12,8 @@ app.get('/', (request, response) => {
     return response.send("Olá! Eu sou o Back-End utilizando NodeJs e Express")
 })
 
-
-app.use(RouterPrivate)
+app.use(UsersRouter)
+app.use(PostsRouter)
 
 app.get('/teste/:codigo', (request, response) => {
     //Query 
